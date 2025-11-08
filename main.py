@@ -1,32 +1,41 @@
 ############################################################################
 ## Django ORM Standalone Python Template
 ############################################################################
-""" Here we'll import the parts of Django we need. It's recommended to leave
-these settings as is, and skip to START OF APPLICATION section below """
+""" This script allows you to use Django ORM from a plain Python file
+    without running the web server. Useful for testing your Product model.
+"""
 
-# Turn off bytecode generation
 import sys
 sys.dont_write_bytecode = True
 
-# Import settings
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
 
-# setup django environment
 import django
 django.setup()
 
-# Import your models for use in your script
-from db.models import *
+# import your Product model
+from db.models import Product
 
 ############################################################################
 ## START OF APPLICATION
 ############################################################################
-""" Replace the code below with your own """
 
-# Seed a few users in the database
-User.objects.create(name='Dan')
-User.objects.create(name='Robert')
+# Clear old products
+Product.objects.all().delete()
 
-for u in User.objects.all():
-    print(f'ID: {u.id} \tUsername: {u.name}')
+# Seed sample product data (same as web app)
+sample_products = [
+    ("012345678905", "Banana (each)", 0.39),
+    ("012345678906", "Milk 1L", 2.49),
+    ("012345678907", "White Bread", 1.79),
+    ("111111111111", "Apple", 0.99),
+    ("222222222222", "Eggs (Dozen)", 3.49),
+]
+
+for upc, name, price in sample_products:
+    Product.objects.create(upc=upc, name=name, price=price)
+
+# Print all products to confirm
+for p in Product.objects.all():
+    print(f"{p.upc} → {p.name}: ${p.price}")
