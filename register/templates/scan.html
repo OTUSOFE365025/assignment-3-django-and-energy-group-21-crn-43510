@@ -1,1 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cash Register Scanner</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .card { border: 1px solid #ddd; padding:20px; border-radius:8px; width:400px; }
+        .result { margin-top:15px; padding:10px; background:#f9f9f9; border-radius:6px; }
+        .notfound { color:red; }
+    </style>
+</head>
+<body>
 
+<div class="card">
+    <h2>Scan Product</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Scan</button>
+    </form>
+
+    {% if product %}
+        <div class="result">
+            <strong>{{ product.name }}</strong><br>
+            Price: ${{ product.price }}<br>
+            UPC: {{ product.upc }}
+        </div>
+    {% elif searched_upc %}
+        <div class="result notfound">
+            No product found with UPC: "{{ searched_upc }}"
+        </div>
+    {% endif %}
+
+    <hr>
+    <a href="{% url 'load_products' %}">Load sample products</a>
+</div>
+
+</body>
+</html>
