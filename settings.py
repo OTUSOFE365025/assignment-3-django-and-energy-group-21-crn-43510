@@ -34,7 +34,11 @@ DATABASES = {
 }
 """
 
-INSTALLED_APPS = ("db",)
+INSTALLED_APPS = [
+    ...
+    'register',
+    'db',
+]
 
 TEMPLATES = [
     {
