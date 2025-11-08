@@ -35,3 +35,11 @@ DATABASES = {
 """
 
 INSTALLED_APPS = ("db",)
+
+TEMPLATES = [
+    {
+        ...
+        'DIRS': [ BASE_DIR / 'register' / 'templates', ],
+        ...
+    },
+]
