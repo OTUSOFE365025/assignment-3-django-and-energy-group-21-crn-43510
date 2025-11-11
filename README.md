@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/-cPJVYMd)
 Django ORM Standalone
 =====================
 
@@ -88,6 +89,35 @@ ID: 2	Username: Robert
 ----------------------------
 
 Link: [How to Use Django Models](https://docs.djangoproject.com/en/3.1/topics/db/models/)
+
+## Project Structure
+
+- `db/models.py` - a model for what a record in the database should look like
+- `main.py` - allows testing for products in database by hand
+- `settings.py` - a configuration file that enables Django's ORM features without running a full web server
+- `manage.py` - Django management script
+
+## Django ORM Implementation
+
+The `Product` model in `db/models.py` uses Django ORM to:
+- Define product fields (UPC, name, price, energy)
+- Store/retrieve products from the database
+
+
+## Screenshots of the output
+
+<img width="1128" height="183" alt="Screenshot 2025-11-10 230412" src="https://github.com/user-attachments/assets/74327934-249e-46d4-b06b-e6f84556eee4" />
+
+<img width="1068" height="279" alt="Screenshot 2025-11-10 230503" src="https://github.com/user-attachments/assets/2a2a48d9-e6db-45d3-884d-cbc7d8602b93" />
+
+<img width="1012" height="283" alt="Screenshot 2025-11-10 230549" src="https://github.com/user-attachments/assets/3284b949-a2d9-4a15-ae88-a73a8de151c3" />
+
+<img width="1091" height="333" alt="Screenshot 2025-11-10 230624" src="https://github.com/user-attachments/assets/51bcf2d0-d1ad-46c6-9ad9-774ba51a53c8" />
+
+<img width="1064" height="328" alt="Screenshot 2025-11-10 230641" src="https://github.com/user-attachments/assets/09d87d93-5512-4f36-abde-77fb2caa3b8a" />
+
+<img width="967" height="336" alt="Screenshot 2025-11-10 230657" src="https://github.com/user-attachments/assets/a0ab745a-7605-48e7-8775-8d1fd180523a" />
+
 
 License
 -------
