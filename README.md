@@ -94,7 +94,7 @@ Link: [How to Use Django Models](https://docs.djangoproject.com/en/3.1/topics/db
 
 - `db/models.py` - a model for what a record in the database should look like
 - `main.py` - allows testing for products in database by hand
-- `settings.py` - 
+- `settings.py` - a configuration file that enables Django's ORM features without running a full web server
 - `manage.py` - Django management script
 
 ## Django ORM Implementation
