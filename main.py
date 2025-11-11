@@ -1,9 +1,6 @@
 ############################################################################
 ## Django ORM Standalone Python Template
 ############################################################################
-""" This script allows you to use Django ORM from a plain Python file
-    without running the web server. Useful for testing your Product model.
-"""
 
 import sys
 sys.dont_write_bytecode = True
@@ -14,17 +11,15 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
 import django
 django.setup()
 
-# import your Product model
 from db.models import Product
 
 ############################################################################
 ## START OF APPLICATION
 ############################################################################
 
-# Clear old products
+# Populate database
 Product.objects.all().delete()
 
-# Seed sample product data (same as web app)
 sample_products = [
     ("012345678905", "Banana (each)", 0.39),
     ("012345678906", "Milk 1L", 2.49),
@@ -36,6 +31,18 @@ sample_products = [
 for upc, name, price in sample_products:
     Product.objects.create(upc=upc, name=name, price=price)
 
-# Print all products to confirm
-for p in Product.objects.all():
-    print(f"{p.upc} → {p.name}: ${p.price}")
+print("Database seeded with products.\n")
+
+# Cash register scanning loop
+while True:
+    upc = input("Scan UPC (or type 'exit'): ").strip()
+
+    if upc.lower() == "exit":
+        print("Exiting cash register.")
+        break
+
+    try:
+        product = Product.objects.get(upc=upc)
+        print(f"Product: {product.name} | Price: ${product.price}\n")
+    except Product.DoesNotExist:
+        print("Product not found.\n")
