@@ -90,6 +90,34 @@ ID: 2	Username: Robert
 
 Link: [How to Use Django Models](https://docs.djangoproject.com/en/3.1/topics/db/models/)
 
+## Project Structure
+
+- `db/models.py` - a model for what a record in the database should look like
+- `register/admin.py` - registers the product with the admin interface
+- `register/apps.py` - ensures that Django properly recognizes the files
+- `register/forms.py` - scan the form for UPC input
+- `register/urls.py` - registers the URL routing for the general user
+- `register/views.py` - load the products currently in the database and scan future products into the database
+- `register/templates/scan.html` - Product scanning interface
+- `main.py` - allows testing for products in database by hand
+- `settings.py` - 
+- `urls.py` - registers the URL routing for the admin
+- `manage.py` - Django management script
+
+## Django ORM Implementation
+
+The `Product` model in `db/models.py` uses Django ORM to:
+- Define product fields (UPC, name, price, energy)
+- Store/retrieve products from the database
+- Example: `Product.objects.filter(upc=scan_value)`
+
+## Getting Started
+
+1. Install dependencies: `pip install -r requirements.txt`
+2. Run migrations: `python manage.py migrate`
+3. Load sample data: `python manage.py runserver`
+4. Navigate to scan page
+
 License
 -------
 
